@@ -1,0 +1,26 @@
+with open("dataset_391_1.txt") as inf:
+	data = []
+	for line in inf:
+		line = line.split()
+		templine = []
+		if len(line) == 5:
+			print line[4]
+			if line[4] == 'I.setosa':
+				templine[0:4] = line[0:4]
+				templine.append(1)
+			if line[4] == 'I.versicolor':
+				templine[0:4] = line[0:4]
+				templine.append(2)
+			if line[4] == 'I.virginica':
+				templine[0:4] = line[0:4]
+				templine.append(3)
+			print templine
+		data.append(templine)
+
+data.sort(key=lambda s:(s[4]))
+
+import csv
+with open('irisoutput.dat', 'w') as fp:
+	a = csv.writer(fp, delimiter=' ')
+	for row in data:
+		a.writerow(row)
